@@ -2,6 +2,7 @@ package com.sharaafnazeer.dronesapp.controllers;
 
 import com.sharaafnazeer.dronesapp.dto.DroneBatteryDto;
 import com.sharaafnazeer.dronesapp.dto.DroneDto;
+import com.sharaafnazeer.dronesapp.dto.MessageResponseDto;
 import com.sharaafnazeer.dronesapp.services.DroneService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
-@RequestMapping(value = "/api/v1/drones", consumes = APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/v1/drones")
 @Validated
 public class DroneController {
     private final DroneService droneService;
@@ -26,24 +27,26 @@ public class DroneController {
         this.droneService = droneService;
     }
 
-    @PostMapping(value = "/register", consumes = APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/register", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<DroneDto> registerDrone(@Valid @RequestBody DroneDto dto) {
 
         DroneDto createdDrone = droneService.registerDrone(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdDrone);
     }
 
-    @GetMapping(value = "/available", consumes = APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/available", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<List<DroneDto>> findAvailableDrones() {
 
         List<DroneDto> droneDtoList = droneService.findAvailableDrones();
         return ResponseEntity.ok(droneDtoList);
     }
 
-    @GetMapping(value = "battery/{serialNumber}", consumes = APPLICATION_JSON_VALUE)
+    @GetMapping(value = "battery/{serialNumber}", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<DroneBatteryDto> getDroneBattery(@PathVariable("serialNumber") String serialNumber) {
 
         DroneBatteryDto droneBatteryDto = droneService.checkDroneBattery(serialNumber);
-        return ResponseEntity.status(HttpStatus.OK).body(droneBatteryDto);
+        if (droneBatteryDto != null)
+            return new ResponseEntity<>(droneBatteryDto, HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }

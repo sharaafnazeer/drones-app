@@ -22,11 +22,17 @@ public class DroneDto {
     @NotNull(message = "Please provide a model")
     private DroneModel model;
 
-    @DecimalMax(value = "500", message = "Drone cannot carry more than {value} grams")
+    @NotNull(message = "Please provide a maximum weight")
+    @JsonProperty(required = true)
+    @NotEmpty
+    @NotBlank
+    @Max(value = 500, message = "Drone cannot carry more than {value} grams")
     private Double maxWeight;
 
     @JsonProperty(required = true)
     @NotNull(message = "Please provide a battery life")
+    @NotEmpty
+    @NotBlank
     private Integer batteryLife;
 
     private String state;

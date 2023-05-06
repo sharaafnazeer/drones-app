@@ -3,8 +3,8 @@ package com.sharaafnazeer.dronesapp.entities;
 import com.sharaafnazeer.dronesapp.enums.DroneModel;
 import com.sharaafnazeer.dronesapp.enums.DroneState;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Positive;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,10 +23,12 @@ public class Drone {
     private DroneModel model;
 
     @Column(name = "maxWeight")
-    @DecimalMax(value = "500", message = " Drone cannot carry more than {value} grams")
+    @Positive
+    @Max(value = 500, message = "Drone cannot carry more than {value} grams")
     private Double maxWeight;
 
     @Column(name = "batteryLife")
+    @Positive
     @Max(value = 100, message = "Battery life cannot be more than 100%")
     private Integer batteryLife;
 
