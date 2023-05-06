@@ -1,5 +1,6 @@
 package com.sharaafnazeer.dronesapp.repos;
 
+import com.sharaafnazeer.dronesapp.entities.Drone;
 import com.sharaafnazeer.dronesapp.entities.Medication;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -10,6 +11,5 @@ public interface MedicationRepository extends JpaRepository<Medication, String> 
     List<Medication> findAll();
 
     Medication findByCode(String code);
-
-    List<Medication> findAllByCodeIn(List<String> codes);
+    List<Medication> findByDrone(Drone drone);
 }

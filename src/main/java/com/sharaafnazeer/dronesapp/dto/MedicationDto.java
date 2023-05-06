@@ -1,5 +1,6 @@
 package com.sharaafnazeer.dronesapp.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sharaafnazeer.dronesapp.constants.AppConstants;
 import com.sharaafnazeer.dronesapp.constants.ResponseMessages;
@@ -30,5 +31,6 @@ public class MedicationDto {
 
     private String image;
 
+    @JsonIgnore
     private DroneDto drone;
 }

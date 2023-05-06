@@ -1,6 +1,7 @@
 package com.sharaafnazeer.dronesapp.services;
 
 import com.sharaafnazeer.dronesapp.dto.MedicationDto;
+import com.sharaafnazeer.dronesapp.entities.Drone;
 import com.sharaafnazeer.dronesapp.entities.Medication;
 import com.sharaafnazeer.dronesapp.mappers.MedicationMapper;
 import com.sharaafnazeer.dronesapp.repos.MedicationRepository;
@@ -38,5 +39,11 @@ public class MedicationServiceImpl implements MedicationService {
     public MedicationDto getMedicationByCode(String code) {
         Medication medication = medicationRepository.findByCode(code);
         return mapper.medicationToMedicationDto(medication);
+    }
+
+    @Override
+    public List<MedicationDto> getMedicationsByDrone(Drone drone) {
+        List<Medication> medications = medicationRepository.findByDrone(drone);
+        return mapper.medicationsToMedicationDtos(medications);
     }
 }

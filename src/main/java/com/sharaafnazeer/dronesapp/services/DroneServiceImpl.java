@@ -105,4 +105,13 @@ public class DroneServiceImpl implements DroneService {
         });
         droneRepository.save(existingDrone);
     }
+
+    @Override
+    public List<MedicationDto> getMedicationsByDrone(String serialNumber) {
+        Drone drone = droneRepository.findBySerialNumber(serialNumber);
+        if (drone == null) {
+            throw new DroneException(ResponseMessages.DRONE_NOT_FOUND);
+        }
+        return medicationService.getMedicationsByDrone(drone);
+    }
 }

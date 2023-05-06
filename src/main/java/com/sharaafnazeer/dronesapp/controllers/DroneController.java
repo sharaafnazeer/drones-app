@@ -1,10 +1,7 @@
 package com.sharaafnazeer.dronesapp.controllers;
 
 import com.sharaafnazeer.dronesapp.constants.ResponseMessages;
-import com.sharaafnazeer.dronesapp.dto.DroneBatteryDto;
-import com.sharaafnazeer.dronesapp.dto.DroneDto;
-import com.sharaafnazeer.dronesapp.dto.LoadDroneDto;
-import com.sharaafnazeer.dronesapp.dto.MessageResponseDto;
+import com.sharaafnazeer.dronesapp.dto.*;
 import com.sharaafnazeer.dronesapp.services.DroneService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +50,12 @@ public class DroneController {
         if (droneBatteryDto != null)
             return new ResponseEntity<>(droneBatteryDto, HttpStatus.OK);
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping(value = "medications/{serialNumber}", produces = APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<MedicationDto>> getDroneMedications(@PathVariable("serialNumber") String serialNumber) {
+        List<MedicationDto> medicationDtos = droneService.getMedicationsByDrone(serialNumber);
+        return new ResponseEntity<>(medicationDtos, HttpStatus.OK);
     }
 
     @PostMapping(value = "/load", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
