@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface MedicationService {
 
-    public MedicationDto saveMedication(MedicationDto medicationDto);
+    MedicationDto saveMedication(MedicationDto medicationDto);
 
-    public List<Medication> getMedications();
+    List<MedicationDto> getMedications();
 
-    public List<Medication> getMedications(List<String> codes);
+    MedicationDto getMedicationByCode(String code);
 }

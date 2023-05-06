@@ -1,10 +1,9 @@
 package com.sharaafnazeer.dronesapp.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Pattern;
+import com.sharaafnazeer.dronesapp.constants.AppConstants;
+import com.sharaafnazeer.dronesapp.constants.ResponseMessages;
+import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,20 +12,23 @@ import lombok.Setter;
 public class MedicationDto {
 
     @JsonProperty(required = true)
-    @NotEmpty
-    @NotBlank
-    @Pattern(regexp = "^[a-zA-Z0-9.\\-\\/_ ]*$", message = "Only letters, numbers, _ and - are allowed")
+    @NotEmpty(message = ResponseMessages.MEDICATION_NAME_EMPTY)
+    @NotBlank(message = ResponseMessages.MEDICATION_NAME_EMPTY)
+    @Pattern(regexp = "[a-zA-Z_0-9-]+", message = ResponseMessages.MEDICATION_NAME_ERROR)
     private String name;
 
     @JsonProperty(required = true)
-    @Max(value = 500, message = "Weight cannot be greater than 500 grams")
+    @NotNull(message = ResponseMessages.MEDICATION_WEIGHT_EMPTY)
+    @Max(value = 500, message = ResponseMessages.MEDICATION_WEIGHT_ERROR)
     private Double weight;
 
     @JsonProperty(required = true)
-    @NotEmpty
-    @NotBlank
-    @Pattern(regexp = "^[A-Z0-9.\\-\\/_ ]*$", message = "Only letters, numbers, _ and - are allowed")
+    @NotEmpty(message = ResponseMessages.MEDICATION_CODE_EMPTY)
+    @NotBlank(message = ResponseMessages.MEDICATION_CODE_EMPTY)
+    @Pattern(regexp = "[A-Z0-9_]+", message = ResponseMessages.MEDICATION_CODE_ERROR)
     private String code;
 
     private String image;
+
+    private DroneDto drone;
 }

@@ -1,7 +1,9 @@
 package com.sharaafnazeer.dronesapp.controllers;
 
+import com.sharaafnazeer.dronesapp.constants.ResponseMessages;
 import com.sharaafnazeer.dronesapp.dto.DroneBatteryDto;
 import com.sharaafnazeer.dronesapp.dto.DroneDto;
+import com.sharaafnazeer.dronesapp.dto.LoadDroneDto;
 import com.sharaafnazeer.dronesapp.dto.MessageResponseDto;
 import com.sharaafnazeer.dronesapp.services.DroneService;
 import jakarta.validation.Valid;
@@ -28,10 +30,13 @@ public class DroneController {
     }
 
     @PostMapping(value = "/register", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
-    public ResponseEntity<DroneDto> registerDrone(@Valid @RequestBody DroneDto dto) {
+    public ResponseEntity<MessageResponseDto> registerDrone(@Valid @RequestBody DroneDto dto) {
 
         DroneDto createdDrone = droneService.registerDrone(dto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdDrone);
+        if (createdDrone != null)
+            return ResponseEntity.status(HttpStatus.CREATED).body(new MessageResponseDto(ResponseMessages.DRONE_CREATED));
+        else
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new MessageResponseDto(ResponseMessages.DRONE_NOT_CREATED));
     }
 
     @GetMapping(value = "/available", produces = APPLICATION_JSON_VALUE)
@@ -48,5 +53,12 @@ public class DroneController {
         if (droneBatteryDto != null)
             return new ResponseEntity<>(droneBatteryDto, HttpStatus.OK);
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @PostMapping(value = "/load", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+    public ResponseEntity<MessageResponseDto> loadDrone(@Valid @RequestBody LoadDroneDto dto) {
+
+        droneService.loadDrone(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(new MessageResponseDto(ResponseMessages.DRONE_LOADED));
     }
 }

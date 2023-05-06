@@ -5,6 +5,5 @@ import lombok.Data;
 
 @AllArgsConstructor
 public @Data class MessageResponseDto {
-    private String status;
     private String message;
 }

@@ -1,7 +1,8 @@
 package com.sharaafnazeer.dronesapp.entities;
 
+import com.sharaafnazeer.dronesapp.constants.ResponseMessages;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,16 +13,21 @@ import lombok.Setter;
 public class Medication {
 
     @Id
-    @Column(name = "code")
+    @Pattern(regexp = "[A-Z0-9_]+", message = ResponseMessages.MEDICATION_CODE_ERROR)
+    @Column(name = "code", nullable = false)
     private String code;
 
-    @Column(name = "name")
-    @NotNull()
+    @Column(name = "name", nullable = false)
+    @Pattern(regexp = "[a-zA-Z_0-9-]+", message = ResponseMessages.MEDICATION_NAME_ERROR)
     private String name;
 
-    @Column(name = "weight")
+    @Column(name = "weight", nullable = false)
     private Double weight;
 
     @Column(name = "image")
     private String image;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "drone")
+    private Drone drone; // A medication have one drone at a time.
 }

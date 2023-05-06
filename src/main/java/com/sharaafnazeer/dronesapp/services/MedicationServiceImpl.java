@@ -29,13 +29,14 @@ public class MedicationServiceImpl implements MedicationService {
     }
 
     @Override
-    public List<Medication> getMedications() {
-        return medicationRepository.findAll();
+    public List<MedicationDto> getMedications() {
+        List<Medication> medications = medicationRepository.findAll();
+        return mapper.medicationsToMedicationDtos(medications);
     }
 
     @Override
-    public List<Medication> getMedications(List<String> codes) {
-
-        return medicationRepository.findAllByCodeIn(codes);
+    public MedicationDto getMedicationByCode(String code) {
+        Medication medication = medicationRepository.findByCode(code);
+        return mapper.medicationToMedicationDto(medication);
     }
 }

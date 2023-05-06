@@ -2,6 +2,7 @@ package com.sharaafnazeer.dronesapp.services;
 
 import com.sharaafnazeer.dronesapp.dto.DroneBatteryDto;
 import com.sharaafnazeer.dronesapp.dto.DroneDto;
+import com.sharaafnazeer.dronesapp.dto.LoadDroneDto;
 
 import java.util.List;
 
@@ -14,4 +15,6 @@ public interface DroneService {
     List<DroneDto> findAvailableDrones();
 
     DroneBatteryDto checkDroneBattery(String serialNumber);
+
+    void loadDrone(LoadDroneDto loadDroneDto);
 }
