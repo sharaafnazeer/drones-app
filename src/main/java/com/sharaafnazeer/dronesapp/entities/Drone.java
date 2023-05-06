@@ -24,12 +24,10 @@ public class Drone {
 
     @Column(name = "maxWeight")
     @Positive
-    @Max(value = 500, message = "Drone cannot carry more than {value} grams")
     private Double maxWeight;
 
     @Column(name = "batteryLife")
     @Positive
-    @Max(value = 100, message = "Battery life cannot be more than 100%")
     private Integer batteryLife;
 
     @Column(name = "state")

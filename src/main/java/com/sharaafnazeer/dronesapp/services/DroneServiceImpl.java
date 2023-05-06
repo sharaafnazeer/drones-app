@@ -16,16 +16,15 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import static com.sharaafnazeer.dronesapp.constants.AppConstants.BATTERY_LIMIT;
 
 @Service
 @Transactional
 public class DroneServiceImpl implements DroneService {
-
     private final DroneRepository droneRepository;
     private final DroneMapper mapper;
-
     private final MedicationService medicationService;
 
     @Autowired
@@ -49,6 +48,12 @@ public class DroneServiceImpl implements DroneService {
     public DroneDto getDrone(String serialNumber) {
         Drone drone = droneRepository.findBySerialNumber(serialNumber);
         return mapper.droneToDroneDto(drone);
+    }
+
+    @Override
+    public List<DroneDto> getDrones() {
+        List<Drone> drones = droneRepository.findAll();
+        return mapper.dronesToDronesDto(drones);
     }
 
     @Override
