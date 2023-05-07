@@ -1,0 +1,160 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > MedicationController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.sharaafnazeer.dronesapp.controllers</a>
+</div>
+
+<h1>Coverage Summary for Class: MedicationController (com.sharaafnazeer.dronesapp.controllers)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MedicationController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (8/8)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">MedicationController$$SpringCGLIB$$0</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (8/8)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.sharaafnazeer.dronesapp.controllers;
+&nbsp;
+&nbsp;import com.sharaafnazeer.dronesapp.constants.ResponseMessages;
+&nbsp;import com.sharaafnazeer.dronesapp.dto.DroneDto;
+&nbsp;import com.sharaafnazeer.dronesapp.dto.MedicationDto;
+&nbsp;import com.sharaafnazeer.dronesapp.dto.MessageResponseDto;
+&nbsp;import com.sharaafnazeer.dronesapp.services.MedicationService;
+&nbsp;import jakarta.validation.Valid;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.http.HttpStatus;
+&nbsp;import org.springframework.http.ResponseEntity;
+&nbsp;import org.springframework.validation.annotation.Validated;
+&nbsp;import org.springframework.web.bind.annotation.*;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+&nbsp;
+&nbsp;@RestController
+&nbsp;@CrossOrigin(origins = &quot;*&quot;, maxAge = 3600)
+&nbsp;@RequestMapping(value = &quot;/api/v1/medications&quot;)
+&nbsp;@Validated
+&nbsp;public class MedicationController {
+&nbsp;
+&nbsp;    private final MedicationService medicationService;
+&nbsp;
+&nbsp;    @Autowired
+<b class="fc">&nbsp;    public MedicationController(MedicationService medicationService) {</b>
+<b class="fc">&nbsp;        this.medicationService = medicationService;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+&nbsp;    public ResponseEntity&lt;MessageResponseDto&gt; saveMedication(@Valid @RequestBody MedicationDto dto) {
+<b class="fc">&nbsp;        MedicationDto createdMedication = medicationService.saveMedication(dto);</b>
+<b class="fc">&nbsp;        if (createdMedication != null)</b>
+<b class="fc">&nbsp;            return ResponseEntity.status(HttpStatus.CREATED).body(new MessageResponseDto(ResponseMessages.MEDICATION_CREATED));</b>
+&nbsp;        else
+<b class="fc">&nbsp;            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new MessageResponseDto(ResponseMessages.MEDICATION_NOT_CREATED));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @GetMapping(produces = APPLICATION_JSON_VALUE)
+&nbsp;    public ResponseEntity&lt;List&lt;MedicationDto&gt;&gt; getMedications() {
+&nbsp;
+<b class="fc">&nbsp;        List&lt;MedicationDto&gt; medicationDtos = medicationService.getMedications();</b>
+<b class="fc">&nbsp;        return ResponseEntity.ok(medicationDtos);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-05-07 19:45</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > DroneService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.sharaafnazeer.dronesapp.services</a>
+</div>
+
+<h1>Coverage Summary for Class: DroneService (com.sharaafnazeer.dronesapp.services)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+</tr>
+  <tr>
+    <td class="name">DroneService$MockitoMock$hY28BfdD</td>
+  </tr>
+  <tr>
+    <td class="name">DroneService$MockitoMock$hY28BfdD$auxiliary$u0rSWpq0</td>
+  </tr>
+  <tr>
+    <td class="name">DroneService$MockitoMock$hY28BfdD$auxiliary$YJkkx9vr</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.sharaafnazeer.dronesapp.services;
+&nbsp;
+&nbsp;import com.sharaafnazeer.dronesapp.dto.DroneBatteryDto;
+&nbsp;import com.sharaafnazeer.dronesapp.dto.DroneDto;
+&nbsp;import com.sharaafnazeer.dronesapp.dto.LoadDroneDto;
+&nbsp;import com.sharaafnazeer.dronesapp.dto.MedicationDto;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;public interface DroneService {
+&nbsp;
+&nbsp;    DroneDto registerDrone(DroneDto droneDto);
+&nbsp;
+&nbsp;    DroneDto getDrone(String serialNumber);
+&nbsp;
+&nbsp;    List&lt;DroneDto&gt; getDrones();
+&nbsp;
+&nbsp;    List&lt;DroneDto&gt; getAvailableDrones();
+&nbsp;
+&nbsp;    DroneBatteryDto checkDroneBattery(String serialNumber);
+&nbsp;
+&nbsp;    DroneDto loadDrone(LoadDroneDto loadDroneDto);
+&nbsp;
+&nbsp;    List&lt;MedicationDto&gt; getMedicationsByDrone(String serialNumber);
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-05-07 19:45</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,145 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > AuditLogServiceImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.sharaafnazeer.dronesapp.services.impl</a>
+</div>
+
+<h1>Coverage Summary for Class: AuditLogServiceImpl (com.sharaafnazeer.dronesapp.services.impl)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">AuditLogServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (7/7)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">AuditLogServiceImpl$$SpringCGLIB$$0</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (7/7)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.sharaafnazeer.dronesapp.services.impl;
+&nbsp;
+&nbsp;import com.sharaafnazeer.dronesapp.entities.AuditLog;
+&nbsp;import com.sharaafnazeer.dronesapp.repos.AuditLogRepository;
+&nbsp;import com.sharaafnazeer.dronesapp.repos.DroneBatteryAuditRepository;
+&nbsp;import com.sharaafnazeer.dronesapp.services.AuditLogService;
+&nbsp;import jakarta.transaction.Transactional;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;
+&nbsp;@Service
+&nbsp;@Transactional
+&nbsp;public class AuditLogServiceImpl implements AuditLogService {
+&nbsp;
+&nbsp;    private final AuditLogRepository auditLogRepository;
+&nbsp;    private final DroneBatteryAuditRepository droneBatteryAuditRepository;
+&nbsp;
+&nbsp;    @Autowired
+<b class="fc">&nbsp;    public AuditLogServiceImpl(AuditLogRepository auditLogRepository, DroneBatteryAuditRepository droneBatteryAuditRepository) {</b>
+<b class="fc">&nbsp;        this.auditLogRepository = auditLogRepository;</b>
+<b class="fc">&nbsp;        this.droneBatteryAuditRepository = droneBatteryAuditRepository;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public AuditLog saveAuditLog(AuditLog auditLog) {
+<b class="fc">&nbsp;        AuditLog savedAuditLog = auditLogRepository.save(auditLog);</b>
+<b class="fc">&nbsp;        if (auditLog.getDroneBatteryAudits().size() &gt; 0)</b>
+<b class="fc">&nbsp;            droneBatteryAuditRepository.saveAll(auditLog.getDroneBatteryAudits());</b>
+&nbsp;
+<b class="fc">&nbsp;        return savedAuditLog;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-05-07 19:45</div>
+</div>
+</body>
+</html>

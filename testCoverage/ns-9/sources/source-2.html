@@ -1,0 +1,217 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > DroneMapperImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.sharaafnazeer.dronesapp.mappers</a>
+</div>
+
+<h1>Coverage Summary for Class: DroneMapperImpl (com.sharaafnazeer.dronesapp.mappers)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">DroneMapperImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    91.7%
+  </span>
+  <span class="absValue">
+    (33/36)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">DroneMapperImpl$MockitoMock$GxUxn4x3</td>
+  </tr>
+  <tr>
+    <td class="name">DroneMapperImpl$MockitoMock$GxUxn4x3$auxiliary$fAqYc6dn</td>
+  </tr>
+  <tr>
+    <td class="name">DroneMapperImpl$MockitoMock$GxUxn4x3$auxiliary$Kvwf7txb</td>
+  </tr>
+  <tr>
+    <td class="name">DroneMapperImpl$MockitoMock$GxUxn4x3$auxiliary$QHTdI303</td>
+  </tr>
+  <tr>
+    <td class="name">DroneMapperImpl$MockitoMock$GxUxn4x3$auxiliary$uRZ4r6HX</td>
+  </tr>
+  <tr>
+    <td class="name">DroneMapperImpl$MockitoMock$GxUxn4x3$auxiliary$wQb2G2Ci</td>
+  </tr>
+  <tr>
+    <td class="name">DroneMapperImpl$MockitoMock$GxUxn4x3$auxiliary$WvnkRg6r</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    91.7%
+  </span>
+  <span class="absValue">
+    (33/36)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.sharaafnazeer.dronesapp.mappers;
+&nbsp;
+&nbsp;import com.sharaafnazeer.dronesapp.dto.DroneBatteryDto;
+&nbsp;import com.sharaafnazeer.dronesapp.dto.DroneDto;
+&nbsp;import com.sharaafnazeer.dronesapp.entities.Drone;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;import javax.annotation.processing.Generated;
+&nbsp;import org.springframework.stereotype.Component;
+&nbsp;
+&nbsp;@Generated(
+&nbsp;    value = &quot;org.mapstruct.ap.MappingProcessor&quot;,
+&nbsp;    date = &quot;2023-05-07T19:00:20+0530&quot;,
+&nbsp;    comments = &quot;version: 1.5.5.Final, compiler: javac, environment: Java 17.0.7 (Oracle Corporation)&quot;
+&nbsp;)
+&nbsp;@Component
+<b class="fc">&nbsp;public class DroneMapperImpl implements DroneMapper {</b>
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public DroneDto droneToDroneDto(Drone drone) {
+<b class="fc">&nbsp;        if ( drone == null ) {</b>
+<b class="fc">&nbsp;            return null;</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        DroneDto droneDto = new DroneDto();</b>
+&nbsp;
+<b class="fc">&nbsp;        droneDto.setWeightLoaded( drone.getCurrentWeight() );</b>
+<b class="fc">&nbsp;        droneDto.setState( drone.getState() );</b>
+<b class="fc">&nbsp;        droneDto.setSerialNumber( drone.getSerialNumber() );</b>
+<b class="fc">&nbsp;        droneDto.setModel( drone.getModel() );</b>
+<b class="fc">&nbsp;        droneDto.setMaxWeight( drone.getMaxWeight() );</b>
+<b class="fc">&nbsp;        droneDto.setBatteryLife( drone.getBatteryLife() );</b>
+&nbsp;
+<b class="fc">&nbsp;        return droneDto;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public List&lt;DroneDto&gt; dronesToDronesDto(List&lt;Drone&gt; drones) {
+<b class="fc">&nbsp;        if ( drones == null ) {</b>
+<b class="nc">&nbsp;            return null;</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        List&lt;DroneDto&gt; list = new ArrayList&lt;DroneDto&gt;( drones.size() );</b>
+<b class="fc">&nbsp;        for ( Drone drone : drones ) {</b>
+<b class="fc">&nbsp;            list.add( droneToDroneDto( drone ) );</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;
+<b class="fc">&nbsp;        return list;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public Drone droneDtoToDrone(DroneDto dto) {
+<b class="fc">&nbsp;        if ( dto == null ) {</b>
+<b class="nc">&nbsp;            return null;</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        Drone drone = new Drone();</b>
+&nbsp;
+<b class="fc">&nbsp;        drone.setSerialNumber( dto.getSerialNumber() );</b>
+<b class="fc">&nbsp;        drone.setModel( dto.getModel() );</b>
+<b class="fc">&nbsp;        drone.setMaxWeight( dto.getMaxWeight() );</b>
+<b class="fc">&nbsp;        drone.setBatteryLife( dto.getBatteryLife() );</b>
+<b class="fc">&nbsp;        drone.setState( dto.getState() );</b>
+&nbsp;
+<b class="fc">&nbsp;        return drone;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public DroneBatteryDto droneToBatteryDto(Drone drone) {
+<b class="fc">&nbsp;        if ( drone == null ) {</b>
+<b class="nc">&nbsp;            return null;</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        DroneBatteryDto droneBatteryDto = new DroneBatteryDto();</b>
+&nbsp;
+<b class="fc">&nbsp;        droneBatteryDto.setSerialNumber( drone.getSerialNumber() );</b>
+<b class="fc">&nbsp;        if ( drone.getModel() != null ) {</b>
+<b class="fc">&nbsp;            droneBatteryDto.setModel( drone.getModel().name() );</b>
+&nbsp;        }
+<b class="fc">&nbsp;        if ( drone.getBatteryLife() != null ) {</b>
+<b class="fc">&nbsp;            droneBatteryDto.setBatteryLife( drone.getBatteryLife() );</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        return droneBatteryDto;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-05-07 19:45</div>
+</div>
+</body>
+</html>
