@@ -1,4 +1,4 @@
-package com.sharaafnazeer.dronesapp.services;
+package com.sharaafnazeer.dronesapp.services.impl;
 
 import com.sharaafnazeer.dronesapp.constants.ResponseMessages;
 import com.sharaafnazeer.dronesapp.dto.DroneBatteryDto;
@@ -10,13 +10,14 @@ import com.sharaafnazeer.dronesapp.enums.DroneState;
 import com.sharaafnazeer.dronesapp.exceptions.DroneException;
 import com.sharaafnazeer.dronesapp.mappers.DroneMapper;
 import com.sharaafnazeer.dronesapp.repos.DroneRepository;
+import com.sharaafnazeer.dronesapp.services.DroneService;
+import com.sharaafnazeer.dronesapp.services.MedicationService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 import static com.sharaafnazeer.dronesapp.constants.AppConstants.BATTERY_LIMIT;
 
@@ -57,7 +58,7 @@ public class DroneServiceImpl implements DroneService {
     }
 
     @Override
-    public List<DroneDto> findAvailableDrones() {
+    public List<DroneDto> getAvailableDrones() {
         List<DroneState> status = new ArrayList<>();
         status.add(DroneState.IDLE);
         status.add(DroneState.LOADING);

@@ -15,7 +15,7 @@ public interface DroneService {
 
     List<DroneDto> getDrones();
 
-    List<DroneDto> findAvailableDrones();
+    List<DroneDto> getAvailableDrones();
 
     DroneBatteryDto checkDroneBattery(String serialNumber);
 

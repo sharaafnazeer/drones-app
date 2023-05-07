@@ -1,10 +1,11 @@
-package com.sharaafnazeer.dronesapp.services;
+package com.sharaafnazeer.dronesapp.services.impl;
 
 import com.sharaafnazeer.dronesapp.dto.MedicationDto;
 import com.sharaafnazeer.dronesapp.entities.Drone;
 import com.sharaafnazeer.dronesapp.entities.Medication;
 import com.sharaafnazeer.dronesapp.mappers.MedicationMapper;
 import com.sharaafnazeer.dronesapp.repos.MedicationRepository;
+import com.sharaafnazeer.dronesapp.services.MedicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

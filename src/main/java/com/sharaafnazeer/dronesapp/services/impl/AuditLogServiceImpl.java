@@ -1,8 +1,9 @@
-package com.sharaafnazeer.dronesapp.services;
+package com.sharaafnazeer.dronesapp.services.impl;
 
 import com.sharaafnazeer.dronesapp.entities.AuditLog;
 import com.sharaafnazeer.dronesapp.repos.AuditLogRepository;
 import com.sharaafnazeer.dronesapp.repos.DroneBatteryAuditRepository;
+import com.sharaafnazeer.dronesapp.services.AuditLogService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

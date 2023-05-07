@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sharaafnazeer.dronesapp.constants.ResponseMessages;
 import com.sharaafnazeer.dronesapp.enums.DroneModel;
+import com.sharaafnazeer.dronesapp.enums.DroneState;
 import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -34,6 +35,6 @@ public class DroneDto {
     @Max(value = 100, message = ResponseMessages.DRONE_BATTERY_ERROR)
     private Integer batteryLife;
 
-    private String state;
+    private DroneState state;
     private Double weightLoaded;
 }

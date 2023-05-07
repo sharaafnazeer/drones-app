@@ -8,6 +8,8 @@ import jakarta.validation.constraints.Positive;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Getter
 @Setter
 @Entity
@@ -36,5 +38,8 @@ public class Drone {
 
     @Column(name = "currentWeight")
     private Double currentWeight;
+
+    @OneToMany(mappedBy = "drone")
+    private Set<Medication> medications;
 
 }

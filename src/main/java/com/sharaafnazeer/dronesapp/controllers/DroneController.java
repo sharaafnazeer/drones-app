@@ -39,7 +39,7 @@ public class DroneController {
     @GetMapping(value = "/available", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<List<DroneDto>> findAvailableDrones() {
 
-        List<DroneDto> droneDtoList = droneService.findAvailableDrones();
+        List<DroneDto> droneDtoList = droneService.getAvailableDrones();
         return ResponseEntity.ok(droneDtoList);
     }
 
