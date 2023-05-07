@@ -28,6 +28,6 @@ public class Medication {
     private String image;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "drone")
+    @JoinColumn(name = "drone_serial")
     private Drone drone; // A medication have one drone at a time.
 }

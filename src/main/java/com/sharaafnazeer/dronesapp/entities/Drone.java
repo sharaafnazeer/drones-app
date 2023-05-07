@@ -18,7 +18,7 @@ public class Drone {
     @Column(name = "serialNumber", length = 100)
     private String serialNumber;
 
-    @Column(name = "model")
+    @Column(name = "model", length = 15)
     @Enumerated(value = EnumType.STRING)
     private DroneModel model;
 
@@ -35,6 +35,6 @@ public class Drone {
     private DroneState state;
 
     @Column(name = "currentWeight")
-    private Double currentWeight; // This will keep track the weight of the drone during loading, to prevent
+    private Double currentWeight;
 
 }
