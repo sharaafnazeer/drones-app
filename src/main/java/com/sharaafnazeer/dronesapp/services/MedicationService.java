@@ -2,7 +2,6 @@ package com.sharaafnazeer.dronesapp.services;
 
 import com.sharaafnazeer.dronesapp.dto.MedicationDto;
 import com.sharaafnazeer.dronesapp.entities.Drone;
-import com.sharaafnazeer.dronesapp.entities.Medication;
 
 import java.util.List;
 

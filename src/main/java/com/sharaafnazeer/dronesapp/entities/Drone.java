@@ -3,7 +3,6 @@ package com.sharaafnazeer.dronesapp.entities;
 import com.sharaafnazeer.dronesapp.enums.DroneModel;
 import com.sharaafnazeer.dronesapp.enums.DroneState;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Positive;
 import lombok.Getter;
 import lombok.Setter;

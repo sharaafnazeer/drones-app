@@ -1,7 +1,6 @@
 package com.sharaafnazeer.dronesapp.entities;
 
 import com.sharaafnazeer.dronesapp.enums.AuditType;
-import com.sharaafnazeer.dronesapp.enums.DroneModel;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

@@ -74,7 +74,7 @@ public class DroneServiceImpl implements DroneService {
     }
 
     @Override
-    public void loadDrone(LoadDroneDto loadDroneDto) {
+    public DroneDto loadDrone(LoadDroneDto loadDroneDto) {
         Drone existingDrone = droneRepository.findBySerialNumber(loadDroneDto.getDroneSerial());
         if (existingDrone == null) {
             throw new DroneException(ResponseMessages.DRONE_NOT_FOUND);
@@ -109,7 +109,8 @@ public class DroneServiceImpl implements DroneService {
             medication.setDrone(mapper.droneToDroneDto(existingDrone));
             medicationService.saveMedication(medication);
         });
-        droneRepository.save(existingDrone);
+        Drone savedDrone = droneRepository.save(existingDrone);
+        return mapper.droneToDroneDto(savedDrone);
     }
 
     @Override

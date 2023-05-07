@@ -19,7 +19,7 @@ public interface DroneService {
 
     DroneBatteryDto checkDroneBattery(String serialNumber);
 
-    void loadDrone(LoadDroneDto loadDroneDto);
+    DroneDto loadDrone(LoadDroneDto loadDroneDto);
 
     List<MedicationDto> getMedicationsByDrone(String serialNumber);
 }
