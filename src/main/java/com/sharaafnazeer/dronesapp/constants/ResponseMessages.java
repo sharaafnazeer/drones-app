@@ -17,12 +17,13 @@ public final class ResponseMessages {
     public static final String DRONE_MODEL_EMPTY = "Please provide a model";
     public static final String DRONE_MAX_WEIGHT_EMPTY = "Please provide a maximum weight";
     public static final String DRONE_BATTERY_EMPTY = "Please provide a battery life";
-    public static final String DRONE_MAX_WEIGHT_ERROR = "Drone cannot carry more than {value} grams";
+    public static final String DRONE_MAX_WEIGHT_ERROR = "Drone cannot carry more than it's weight limit";
     public static final String DRONE_SERIAL_ERROR = "Drone serial number must not be less than 3 and greater than 100 characters";
     public static final String DRONE_BATTERY_ERROR = "Drone battery level should be between 0 and 100";
     public static final String DRONE_MAX_WEIGHT_EXCEEDED = "Maximum weight for drone exceeded. Please check the medication weights";
     public static final String DRONE_BATTERY_LOW = "Drone battery is very low";
     public static final String DRONE_LOADING_STATE_EXCEEDED = "Drone is not in a position to load new medications";
+    public static final String FLEET_LIMIT_EXCEEDED = "Fleet limit exceeded. New drones cannot be registered";
 
     // Medication Related Messages
 

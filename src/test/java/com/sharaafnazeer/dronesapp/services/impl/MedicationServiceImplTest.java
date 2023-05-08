@@ -1,10 +1,12 @@
 package com.sharaafnazeer.dronesapp.services.impl;
 
+import com.sharaafnazeer.dronesapp.constants.ResponseMessages;
 import com.sharaafnazeer.dronesapp.dto.MedicationDto;
 import com.sharaafnazeer.dronesapp.entities.Drone;
 import com.sharaafnazeer.dronesapp.entities.Medication;
 import com.sharaafnazeer.dronesapp.enums.DroneModel;
 import com.sharaafnazeer.dronesapp.enums.DroneState;
+import com.sharaafnazeer.dronesapp.exceptions.DroneException;
 import com.sharaafnazeer.dronesapp.mappers.MedicationMapper;
 import com.sharaafnazeer.dronesapp.repos.MedicationRepository;
 import org.junit.jupiter.api.AfterEach;
@@ -43,10 +45,21 @@ class MedicationServiceImplTest {
 
     @Test
     void saveMedication() {
+
+        // Success
+        when(medicationService.getMedicationByCode(getMedicationMock().getCode())).thenReturn(null);
         when(medicationRepository.save(any(Medication.class))).thenReturn(getMedicationMock());
         MedicationDto medicationDto = medicationService.saveMedication(getMockMedicationDto(), false);
         assertNotNull(medicationDto);
         assertEquals("MED", medicationDto.getCode());
+
+        // Failed = Medication code found
+        when(medicationService.getMedicationByCode(getMedicationMock().getCode())).thenReturn(getMockMedicationDto());
+
+        when(medicationRepository.save(any(Medication.class))).thenReturn(getMedicationMock());
+        assertThrows(DroneException.class,
+                () -> medicationService.saveMedication(getMockMedicationDto(), false),
+                ResponseMessages.MEDICATION_FOUND);
     }
 
     @Test

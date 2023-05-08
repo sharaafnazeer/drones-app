@@ -18,6 +18,7 @@ import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.Mockito.when;
 
 class MedicationControllerTest {
@@ -39,13 +40,13 @@ class MedicationControllerTest {
     @Test
     void saveMedication() {
         // Success
-        when(medicationService.saveMedication(any(MedicationDto.class), false)).thenReturn(getMockMedicationDto());
+        when(medicationService.saveMedication(any(MedicationDto.class), anyBoolean())).thenReturn(getMockMedicationDto());
         ResponseEntity<MessageResponseDto> responseDto = medicationController.saveMedication(getMockMedicationDto());
         assertNotNull(responseDto.getBody());
         assertEquals(ResponseMessages.MEDICATION_CREATED, Objects.requireNonNull(responseDto.getBody()).getMessage());
 
         // Failed
-        when(medicationService.saveMedication(any(MedicationDto.class), false)).thenReturn(null);
+        when(medicationService.saveMedication(any(MedicationDto.class), anyBoolean())).thenReturn(null);
         ResponseEntity<MessageResponseDto> responseNullDto = medicationController.saveMedication(getMockMedicationDto());
         assertEquals(HttpStatus.BAD_REQUEST, responseNullDto.getStatusCode());
     }

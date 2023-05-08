@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.sharaafnazeer.dronesapp.constants.AppConstants.BATTERY_LIMIT;
+import static com.sharaafnazeer.dronesapp.constants.AppConstants.FLEET_SIZE;
 
 @Service
 @Transactional
@@ -43,6 +44,10 @@ public class DroneServiceImpl implements DroneService {
     // Register and save drone
     @Override
     public DroneDto registerDrone(DroneDto droneDto) {
+
+        if (droneRepository.count() == FLEET_SIZE) {
+            throw new DroneException(ResponseMessages.FLEET_LIMIT_EXCEEDED);
+        }
 
         // Find if any drones available with existing serial number
         DroneDto existing = getDrone(droneDto.getSerialNumber());

@@ -52,10 +52,21 @@ class DroneServiceImplTest {
 
     @Test
     void registerDrone() {
+        // Success
+        when(droneService.getDrone(getMockDrone().getSerialNumber())).thenReturn(null);
+
         when(droneRepository.save(any(Drone.class))).thenReturn(getMockDrone());
         DroneDto droneDto = droneService.registerDrone(getMockDroneDto());
         assertNotNull(droneDto);
         assertEquals("ABC123", droneDto.getSerialNumber());
+
+        // Failed = Drone serial found
+        when(droneService.getDrone(getMockDrone().getSerialNumber())).thenReturn(getMockDroneDto());
+
+        when(droneRepository.save(any(Drone.class))).thenReturn(getMockDrone());
+        assertThrows(DroneException.class,
+                () -> droneService.registerDrone(getMockDroneDto()),
+                ResponseMessages.DRONE_FOUND);
     }
 
     @Test
