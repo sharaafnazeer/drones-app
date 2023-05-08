@@ -82,6 +82,7 @@ While implementing your solution **please take care of the following requirement
 - IntelliJ Idea / Any Other IDE
 - Maven
 - Postman - To test the APIs
+- Docker (Optional)
 
 ---
 
@@ -97,13 +98,41 @@ While implementing your solution **please take care of the following requirement
    mvn clean install
  ```
 
-4. Run the following command to run the application or use the option provided by the IDE
+### Running the Application
+
+---
+
+1. Run the following command to run the application or use the option provided by the IDE
 
 ```
    mvn spring-boot:run
  ```
 
-5. Drones application will start working on ```port 8080``` on your machine.
+2. Drones application will start working on ```port 8080``` on your machine.
+
+---
+
+### Running the Application - Using Docker
+
+---
+
+If you want to use docker to run the application please follow the steps.
+
+1. Run the following command to build the docker image
+
+```
+    docker build -t drone-docker:drone-docker .
+```
+
+2. Run the following command to start the container and run the application in detached mode
+
+```
+    docker run -p 8080:8080 drone-docker:drone-docker .
+```
+
+3. Drones application will start working on ```port 8080``` on your machine.
+
+---
 
 ### Assumptions and Design Decisions
 
@@ -120,7 +149,8 @@ While implementing your solution **please take care of the following requirement
 - I have captured the audit logs in two tables **AuditLog** and **DroneBatteryAudit** where one **AuditLog** can have
   multiple **DroneBatteryAudit** records. And **AuditLog** can be used to log any other cases as well.
 - I have selected an in-memory database (H2) to persist data. Thus, when the application restarts the persisted data
-  will be flushed. You can visit the DB interface via ```localhost:8080/h2-console```. Username and password will be *
+  will be flushed. You can visit the DB interface via ```http://localhost:8080/h2-console``` (Will not work, when
+  running with docker. Needs additional configurations). Username and password will be *
   *admin**
 - When a drone is registered it will be in the **IDLE** state and will have the **currentWeight** as 0. and the *
   *currentWeight** will be increased based on the weight of loaded medications.
@@ -197,17 +227,19 @@ Replace ```{{droneSerialNumber}}``` with actual drone serial number
 
 ![img_6.png](images/img_6.png)
 
-
 ### Unit Tests of Service Methods and Controller Methods
 
 ---
 
 - Use the following command to run Unit test for the entire application where it is applicable.
+
 ```
    mvn test
  ```
 
-- Use the following command to run Unit test for a specific class. Replace ```TestClassName``` with one of the actual class name.
+- Use the following command to run Unit test for a specific class. Replace ```TestClassName``` with one of the actual
+  class name.
+
 ```
 mvn test -Dtest="TestClassName"
 ```

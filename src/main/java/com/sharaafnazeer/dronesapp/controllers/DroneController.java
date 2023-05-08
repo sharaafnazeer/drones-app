@@ -21,7 +21,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
-@RequestMapping(value = "drones")
+@RequestMapping(value = "/api/v1/drones")
 @Validated
 public class DroneController {
     private final DroneService droneService;
