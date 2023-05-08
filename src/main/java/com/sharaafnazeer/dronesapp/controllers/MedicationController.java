@@ -22,7 +22,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
-@RequestMapping(value = "/api/v1/medications")
+@RequestMapping(value = "medications")
 @Validated
 public class MedicationController {
 
