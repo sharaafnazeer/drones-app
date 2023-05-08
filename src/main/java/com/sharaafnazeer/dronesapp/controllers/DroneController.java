@@ -47,9 +47,7 @@ public class DroneController {
     public ResponseEntity<DroneBatteryDto> getDroneBattery(@PathVariable("serialNumber") String serialNumber) {
 
         DroneBatteryDto droneBatteryDto = droneService.checkDroneBattery(serialNumber);
-        if (droneBatteryDto != null)
-            return new ResponseEntity<>(droneBatteryDto, HttpStatus.OK);
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(droneBatteryDto, HttpStatus.OK);
     }
 
     @GetMapping(value = "medications/{serialNumber}", produces = APPLICATION_JSON_VALUE)

@@ -7,7 +7,6 @@ import lombok.Setter;
 @Setter
 public class DroneBatteryDto {
     private String serialNumber;
-    private String model;
     private int batteryLife;
 
 }

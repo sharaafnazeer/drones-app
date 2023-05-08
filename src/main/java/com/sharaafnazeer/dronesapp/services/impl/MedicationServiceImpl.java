@@ -1,8 +1,10 @@
 package com.sharaafnazeer.dronesapp.services.impl;
 
+import com.sharaafnazeer.dronesapp.constants.ResponseMessages;
 import com.sharaafnazeer.dronesapp.dto.MedicationDto;
 import com.sharaafnazeer.dronesapp.entities.Drone;
 import com.sharaafnazeer.dronesapp.entities.Medication;
+import com.sharaafnazeer.dronesapp.exceptions.DroneException;
 import com.sharaafnazeer.dronesapp.mappers.MedicationMapper;
 import com.sharaafnazeer.dronesapp.repos.MedicationRepository;
 import com.sharaafnazeer.dronesapp.services.MedicationService;
@@ -25,6 +27,13 @@ public class MedicationServiceImpl implements MedicationService {
 
     @Override
     public MedicationDto saveMedication(MedicationDto medicationDto) {
+
+        // Find if any medications available with existing code
+        MedicationDto existing = getMedicationByCode(medicationDto.getCode());
+        if (existing != null) {
+            throw new DroneException(ResponseMessages.MEDICATION_FOUND);
+        }
+
         Medication medication = mapper.medicationDtoToMedication(medicationDto);
         Medication createdMedication = medicationRepository.save(medication);
         return mapper.medicationToMedicationDto(createdMedication);

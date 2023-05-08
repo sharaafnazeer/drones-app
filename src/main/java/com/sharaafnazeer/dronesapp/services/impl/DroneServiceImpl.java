@@ -38,6 +38,13 @@ public class DroneServiceImpl implements DroneService {
     // Register and save drone
     @Override
     public DroneDto registerDrone(DroneDto droneDto) {
+
+        // Find if any drones available with existing serial number
+        DroneDto existing = getDrone(droneDto.getSerialNumber());
+        if (existing != null) {
+            throw new DroneException(ResponseMessages.DRONE_FOUND);
+        }
+
         Drone drone = mapper.droneDtoToDrone(droneDto);
         drone.setState(DroneState.IDLE);
         drone.setCurrentWeight(0.0);
@@ -69,7 +76,9 @@ public class DroneServiceImpl implements DroneService {
     @Override
     public DroneBatteryDto checkDroneBattery(String serialNumber) {
         Drone drone = droneRepository.findBySerialNumber(serialNumber);
-
+        if (drone == null) {
+            throw new DroneException(ResponseMessages.DRONE_NOT_FOUND);
+        }
         return mapper.droneToBatteryDto(drone);
     }
 

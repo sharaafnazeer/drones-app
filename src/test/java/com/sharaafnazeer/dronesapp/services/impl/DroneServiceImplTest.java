@@ -20,7 +20,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -88,10 +87,18 @@ class DroneServiceImplTest {
 
     @Test
     void checkDroneBattery() {
+        // Success
         when(droneRepository.findBySerialNumber(anyString())).thenReturn(getMockDrone());
         DroneBatteryDto droneDto = droneService.checkDroneBattery("ABC123");
         assertNotNull(droneDto);
         assertEquals("ABC123", droneDto.getSerialNumber());
+
+        // Fail - Drone not available
+
+        when(droneRepository.findBySerialNumber(anyString())).thenReturn(null);
+        assertThrows(DroneException.class,
+                () -> droneService.checkDroneBattery("ABC123"),
+                ResponseMessages.DRONE_NOT_FOUND);
     }
 
     @Test

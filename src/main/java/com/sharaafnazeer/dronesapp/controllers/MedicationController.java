@@ -1,7 +1,6 @@
 package com.sharaafnazeer.dronesapp.controllers;
 
 import com.sharaafnazeer.dronesapp.constants.ResponseMessages;
-import com.sharaafnazeer.dronesapp.dto.DroneDto;
 import com.sharaafnazeer.dronesapp.dto.MedicationDto;
 import com.sharaafnazeer.dronesapp.dto.MessageResponseDto;
 import com.sharaafnazeer.dronesapp.services.MedicationService;

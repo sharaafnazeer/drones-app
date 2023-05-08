@@ -71,7 +71,7 @@ class DroneControllerTest {
         when(droneService.checkDroneBattery(anyString())).thenReturn(null);
 
         ResponseEntity<DroneBatteryDto> droneNullDto = droneController.getDroneBattery("ABC123");
-        assertEquals(HttpStatus.NOT_FOUND, droneNullDto.getStatusCode());
+        assertNull(droneNullDto.getBody());
     }
 
     @Test

@@ -4,6 +4,7 @@ public final class ResponseMessages {
 
     // Drone Related Messages
     public static final String DRONE_NOT_FOUND = "Drone not found";
+    public static final String DRONE_FOUND = "Existing drone found with the same serial number";
     public static final String DRONE_CREATED = "Drone created successfully";
     public static final String DRONE_LOADED = "Drone loaded successfully";
     public static final String DRONE_NOT_CREATED = "Drone not created successfully";
@@ -21,6 +22,7 @@ public final class ResponseMessages {
     // Medication Related Messages
 
     public static final String MEDICATION_NOT_FOUND = "Medication not found";
+    public static final String MEDICATION_FOUND = "Existing medication found with the same code";
     public static final String MEDICATION_CREATED = "Medication created successfully";
     public static final String MEDICATION_NOT_CREATED = "Medication not created successfully";
     public static final String MEDICATION_CODE_EMPTY = "Please provide medication code";

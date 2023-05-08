@@ -23,7 +23,6 @@ public interface DroneMapper {
     Drone droneDtoToDrone(DroneDto dto);
 
     @Mapping(target="serialNumber",source="drone.serialNumber")
-    @Mapping(target="model",source="drone.model")
     @Mapping(target="batteryLife",source="drone.batteryLife")
     DroneBatteryDto droneToBatteryDto(Drone drone);
 }
