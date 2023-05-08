@@ -44,7 +44,7 @@ class MedicationServiceImplTest {
     @Test
     void saveMedication() {
         when(medicationRepository.save(any(Medication.class))).thenReturn(getMedicationMock());
-        MedicationDto medicationDto = medicationService.saveMedication(getMockMedicationDto());
+        MedicationDto medicationDto = medicationService.saveMedication(getMockMedicationDto(), false);
         assertNotNull(medicationDto);
         assertEquals("MED", medicationDto.getCode());
     }

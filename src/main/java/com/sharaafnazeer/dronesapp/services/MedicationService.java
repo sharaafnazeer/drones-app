@@ -1,3 +1,8 @@
+/*
+ * Author: Sharaaf Nazeer
+ * Copyright (c) 2023.
+ */
+
 package com.sharaafnazeer.dronesapp.services;
 
 import com.sharaafnazeer.dronesapp.dto.MedicationDto;
@@ -7,7 +12,7 @@ import java.util.List;
 
 public interface MedicationService {
 
-    MedicationDto saveMedication(MedicationDto medicationDto);
+    MedicationDto saveMedication(MedicationDto medicationDto, boolean isUpdate);
 
     List<MedicationDto> getMedications();
 

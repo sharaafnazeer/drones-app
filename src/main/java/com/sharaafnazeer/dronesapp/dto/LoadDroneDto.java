@@ -1,3 +1,8 @@
+/*
+ * Author: Sharaaf Nazeer
+ * Copyright (c) 2023.
+ */
+
 package com.sharaafnazeer.dronesapp.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;

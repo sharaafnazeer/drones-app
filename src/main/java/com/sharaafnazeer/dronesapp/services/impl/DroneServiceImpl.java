@@ -1,3 +1,8 @@
+/*
+ * Author: Sharaaf Nazeer
+ * Copyright (c) 2023.
+ */
+
 package com.sharaafnazeer.dronesapp.services.impl;
 
 import com.sharaafnazeer.dronesapp.constants.ResponseMessages;
@@ -116,7 +121,7 @@ public class DroneServiceImpl implements DroneService {
                 existingDrone.setState(DroneState.LOADED);
             }
             medication.setDrone(mapper.droneToDroneDto(existingDrone));
-            medicationService.saveMedication(medication);
+            medicationService.saveMedication(medication, true);
         });
         Drone savedDrone = droneRepository.save(existingDrone);
         return mapper.droneToDroneDto(savedDrone);

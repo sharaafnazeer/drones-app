@@ -1,3 +1,8 @@
+/*
+ * Author: Sharaaf Nazeer
+ * Copyright (c) 2023.
+ */
+
 package com.sharaafnazeer.dronesapp.services.impl;
 
 import com.sharaafnazeer.dronesapp.constants.ResponseMessages;
@@ -26,12 +31,14 @@ public class MedicationServiceImpl implements MedicationService {
     }
 
     @Override
-    public MedicationDto saveMedication(MedicationDto medicationDto) {
+    public MedicationDto saveMedication(MedicationDto medicationDto, boolean isUpdate) {
 
-        // Find if any medications available with existing code
-        MedicationDto existing = getMedicationByCode(medicationDto.getCode());
-        if (existing != null) {
-            throw new DroneException(ResponseMessages.MEDICATION_FOUND);
+        if (!isUpdate) {
+            // Find if any medications available with existing code
+            MedicationDto existing = getMedicationByCode(medicationDto.getCode());
+            if (existing != null) {
+                throw new DroneException(ResponseMessages.MEDICATION_FOUND);
+            }
         }
 
         Medication medication = mapper.medicationDtoToMedication(medicationDto);

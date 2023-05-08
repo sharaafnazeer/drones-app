@@ -1,3 +1,8 @@
+/*
+ * Author: Sharaaf Nazeer
+ * Copyright (c) 2023.
+ */
+
 package com.sharaafnazeer.dronesapp.controllers;
 
 import com.sharaafnazeer.dronesapp.constants.ResponseMessages;
@@ -30,7 +35,7 @@ public class MedicationController {
 
     @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<MessageResponseDto> saveMedication(@Valid @RequestBody MedicationDto dto) {
-        MedicationDto createdMedication = medicationService.saveMedication(dto);
+        MedicationDto createdMedication = medicationService.saveMedication(dto, false);
         if (createdMedication != null)
             return ResponseEntity.status(HttpStatus.CREATED).body(new MessageResponseDto(ResponseMessages.MEDICATION_CREATED));
         else

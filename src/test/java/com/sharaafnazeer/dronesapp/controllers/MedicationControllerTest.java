@@ -39,13 +39,13 @@ class MedicationControllerTest {
     @Test
     void saveMedication() {
         // Success
-        when(medicationService.saveMedication(any(MedicationDto.class))).thenReturn(getMockMedicationDto());
+        when(medicationService.saveMedication(any(MedicationDto.class), false)).thenReturn(getMockMedicationDto());
         ResponseEntity<MessageResponseDto> responseDto = medicationController.saveMedication(getMockMedicationDto());
         assertNotNull(responseDto.getBody());
         assertEquals(ResponseMessages.MEDICATION_CREATED, Objects.requireNonNull(responseDto.getBody()).getMessage());
 
         // Failed
-        when(medicationService.saveMedication(any(MedicationDto.class))).thenReturn(null);
+        when(medicationService.saveMedication(any(MedicationDto.class), false)).thenReturn(null);
         ResponseEntity<MessageResponseDto> responseNullDto = medicationController.saveMedication(getMockMedicationDto());
         assertEquals(HttpStatus.BAD_REQUEST, responseNullDto.getStatusCode());
     }

@@ -1,3 +1,8 @@
+/*
+ * Author: Sharaaf Nazeer
+ * Copyright (c) 2023.
+ */
+
 package com.sharaafnazeer.dronesapp.controllers;
 
 import com.sharaafnazeer.dronesapp.constants.ResponseMessages;
@@ -43,14 +48,14 @@ public class DroneController {
         return ResponseEntity.ok(droneDtoList);
     }
 
-    @GetMapping(value = "battery/{serialNumber}", produces = APPLICATION_JSON_VALUE)
+    @GetMapping(value = "{serialNumber}/battery", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<DroneBatteryDto> getDroneBattery(@PathVariable("serialNumber") String serialNumber) {
 
         DroneBatteryDto droneBatteryDto = droneService.checkDroneBattery(serialNumber);
         return new ResponseEntity<>(droneBatteryDto, HttpStatus.OK);
     }
 
-    @GetMapping(value = "medications/{serialNumber}", produces = APPLICATION_JSON_VALUE)
+    @GetMapping(value = "{serialNumber}/medications", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<List<MedicationDto>> getDroneMedications(@PathVariable("serialNumber") String serialNumber) {
         List<MedicationDto> medicationDtos = droneService.getMedicationsByDrone(serialNumber);
         return new ResponseEntity<>(medicationDtos, HttpStatus.OK);
